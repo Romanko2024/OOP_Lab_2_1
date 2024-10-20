@@ -82,12 +82,11 @@
                 data[i, j] = double.Parse(numbers[j]);
         }
     }
-    //ТРЕБА БУДЕ НАПИСАТИ MAIN ДЛЯ ТЕСТУ І ЩОСЬ ЗРОБИТИ З ПОВТОРЕННЯМ В ОСТАННІХ ДВОХ КОНСТРУКТОРАХ
     //----------------------------
 
     //Властивості (Properties) Height та Width, що дозволяють взнати (але не дозволяють
     //змінити) «висоту» (кількість рядків) та «ширину» (кількість стовпчиків)
-    public int Height => data.GetLength(0);
+    public int Height => data.GetLength(0); //=> замість get{return}
     public int Width => data.GetLength(1);
     //Java-style getter-и (без setter-ів) кількості рядків getHeight() та кількості
     //стовпчиків getWidth()
@@ -95,15 +94,22 @@
     public int getWidth() => Width;
     //Індексатори, що дозволяють публічно доступатися до будь-якого окремого елемента
     //матриці(як взнавати його значення, так і змінювати)
-    //public double this[]
-    //{
-
-    //}
+    public double this[int row, int col] //в індексаторі одразу get і set скороитити з => не вийде(
+    {
+        get
+        {
+            return data[row, col];
+        }
+        set
+        {
+            data[row, col] = value;
+        }
+    }
     //Java-style getter та setter для окремого елемента (getter має два параметри — номер
     //рядка і номер стовпчика, setter має три параметра — номер рядка, номер стовпчика, і
     //значення, яке записати у той рядок і стовпчик)
-    public double GetElement;
-    public double SetElement;
+    public double GetElement(int row, int col) => this[row, col];
+    public double SetElement(int row, int col, double value) => this[row, col] = value;
     //override public String ToString(), який формуватиме (табуляціями та
     //переведеннями рядка) зручне для сприйняття людиною прямокутне подання числової
     //матриці; метод повинен мати саме вищенаведений заголовок, бо саме так вдається
@@ -111,7 +117,16 @@
     //Console.WriteLine(A) (де A – примірник цього самого класу MyMatrix)
     public override string ToString()
     {
-
+        //ініціалізація рядка
+        var result = "";
+        for (int i = 0; i < Height; i++) //по кожному рядку
+        {
+            for (int j = 0; j < Width; j++) //по кожному елементу
+            {
+                result += data[i, j].ToString() + "\t"; //перетвор. на рядок з табуляцією
+            }
+            result += Environment.NewLine; //новаЛінія..
+        }
+        return result;
     }
-
 }
