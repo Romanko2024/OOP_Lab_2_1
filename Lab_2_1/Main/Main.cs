@@ -42,5 +42,36 @@
         MyMatrix matrix5 = new MyMatrix(input);
         Console.WriteLine("тест конструктора з рядка");
         Console.WriteLine(matrix5);
+
+        //тест індексаторів
+        Console.WriteLine("тест індексаторів: [1,1] = " + matrix1[1, 1]);
+        matrix1[1, 1] = 55.0;
+        Console.WriteLine("тест індексаторів: [1,1] (сетнули значення 55.0) = " + matrix1[1, 1]);
+
+        //тест додавання матриць
+        MyMatrix matrixSum = matrix1 + matrix2;
+        Console.WriteLine("сума матриць:");
+        Console.WriteLine(matrixSum);
+
+        //тест множення матриць
+        double[,] array2 = {
+            { 1, 2 },
+            { 3, 4 },
+            { 5, 6 }
+        };
+        MyMatrix matrix6 = new MyMatrix(array2);
+        MyMatrix matrixProduct = matrix1 * matrix6;
+        Console.WriteLine("добуток матриць:");
+        Console.WriteLine(matrixProduct);
+
+        //тест транспонування
+        MyMatrix transposedMatrix = matrix1.GetTransponedCopy();
+        Console.WriteLine("транспонована матриця:");
+        Console.WriteLine(transposedMatrix);
+
+        //тест TransponeMe
+        matrix1.TransponeMe();
+        Console.WriteLine("транспонування TransponeMe:");
+        Console.WriteLine(matrix1);
     }
 }
