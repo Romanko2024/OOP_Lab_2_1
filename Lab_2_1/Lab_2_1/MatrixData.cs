@@ -27,7 +27,7 @@
         int width = jaggedArray[0].Length; //по кільк. ел. у нульовому рядку
         //перевірка прямокутності
         if (jaggedArray.Any(row => row.Length != width)) //any з LINQ
-            throw new ArgumentException("Зубчастий масив не прямокутний")
+            throw new ArgumentException("Зубчастий масив не прямокутний");
         //ініц. двовимірного масиву з розмірами зубчатого
         data = new double[height, width];
         //копіювання
