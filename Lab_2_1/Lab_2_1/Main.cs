@@ -48,6 +48,15 @@
         matrix1[1, 1] = 55.0;
         Console.WriteLine("тест індексаторів: [1,1] (сетнули значення 55.0) = " + matrix1[1, 1]);
 
+        //тест для Java-style getter і setter
+        Console.WriteLine("Тест Java-style getter:");
+        double element = matrix1.GetElement(1, 1); 
+        Console.WriteLine($"елемент(1, 1): {element}"); 
+
+        Console.WriteLine("Тест Java-style setter:");
+        matrix1.SetElement(1, 1, 99.0); 
+        Console.WriteLine($"елемент(1, 1) після SetElement(1, 1, 99.0): {matrix1.GetElement(1, 1)}");
+
         //тест додавання матриць
         MyMatrix matrixSum = matrix1 + matrix2;
         Console.WriteLine("сума матриць:");
